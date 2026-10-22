@@ -3,6 +3,7 @@ export interface CenarioLogin{
     email: string;
     senha: string;
     esperaSucesso: boolean;
+    msgEsperada?: string;
     urlEsperada: RegExp;
 }
 export const ctsLogins:CenarioLogin[] =[
