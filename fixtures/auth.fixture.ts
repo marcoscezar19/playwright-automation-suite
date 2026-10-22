@@ -12,7 +12,7 @@ export const test = base.extend<authFixture>({
         const loginPage = new LoginPage(page);
         await loginPage.goto();
         await use(loginPage);
-    }
+    },
     //entregando a pagina logada
     loggedPage: async({page}, use) => {
         const loginPage = new LoginPage(page);
@@ -21,6 +21,6 @@ export const test = base.extend<authFixture>({
         await page.waitForURL(/painel\.html/);
         await use(page);
     }
-})
+});
 
 export {expect} from '@playwright/test'
