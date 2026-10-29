@@ -30,11 +30,11 @@ test.describe(
                 },
                     data: {
                         "name": uniqueProdName,
-                        "description": "Massa de teste gerada no setup API do tio alison",
+                        "description": "Massa de teste gerada no setup API do Marcos Cézar",
                         "category": "Periféricos",
                         "price": 87.9,
                         "stock": 323,
-                        "image": "https://exemplo.com/imagens/teclado.jpg"
+                        "image": "https://elements-resized.envatousercontent.com/elements-cover-images/07ed1d4b-78ca-409c-af1c-b0fd15643fa1?w=2038&cf_fit=scale-down&q=85&format=auto&s=91436102ab3f0614d943c8f0fe5bbace33a32672455d392abcd86b89a4f669da"
                     }
                 }
             )
