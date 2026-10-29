@@ -15,7 +15,7 @@ test.describe('teste api lojaQA',()=>{
         expect(typeof bodyRes[0].name).toBe('string');
     });
 
-     test("post login lojaQa", async ({request})=>{
+     test("post login lojaQa válido", async ({request})=>{
         const res = await request.post(`${APIUrl}/login`,
             {
                 data:{
@@ -35,4 +35,18 @@ test.describe('teste api lojaQA',()=>{
         expect(typeof resBody.token).toBe('string');
         expect(resBody.token.length).toBeGreaterThan(10);
      });
+
+     test("Login LojaQA invalido", async ({ request }) => {
+        const res = await request.post(`${APIUrl}/login`,
+            {
+            data:{
+                "email": "admin@system.com",
+                "password":"Senhaerrada123"
+            }
+        })
+        expect (res.status()).toBe(401);
+        const errorBody = await res.json();
+        expect (errorBody.token).toBeUndefined();
+        expect (errorBody.error).toBe("Credenciais inválidas.")
+     })
 })
