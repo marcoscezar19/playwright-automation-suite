@@ -6,7 +6,7 @@ test.describe(
     () => {
         let authToken: string;
         let createdProdID: string;
-        const uniqueProdName = `Teclado Mecânico ${Date.now()}`;
+        const uniqueProdName = `Máquina de Lavar ${Date.now()}`;
 
         // ARRANGE(SETUP login Lojista)
         test.beforeAll(async ({ request }) => {
@@ -58,9 +58,24 @@ test.describe(
             expect(targetProd.name).toBe(uniqueProdName);
             expect(targetProd.stock).toBe(323);
             expect(targetProd.price).toBe(87.9);  
-
-
         }
         )
+        // RELEASE(TEARDOWN): GARANTE A LIMPEZA DO AMBIENTE MESMO QUE OS TESTES FALHEM.
+        test.afterAll(async ({request}) =>{
+            if(createdProdID && authToken){
+                //inativa visualização do produto via put, pois não há del
+                const tearDownRes = await request.put(`${APIUrl}/seller/products/${createdProdID}`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${authToken}`
+                        },
+                        data: {
+                            active:false
+                        }
+                    }
+                )
+                expect(tearDownRes.status()).toBe(200);
+            }
+        })
     }
 )
